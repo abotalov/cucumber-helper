@@ -53,6 +53,8 @@ module Cucumber
         features = features.instance_variable_get('@features')
         features.each do |feature|
 
+          scenarios_number = 0
+
           feature.instance_variable_get('@feature_elements').each do |scenario|
             scenario_size = scenario.raw_steps.size
 
@@ -61,10 +63,18 @@ module Cucumber
               examples.each do |example|
                 matrix_size = example.last.instance_variable_get('@rows').size
                 count += scenario_size * (matrix_size - 1)
+                scenarios_number += matrix_size - 1
               end
             else
               count += scenario_size
+              scenarios_number += 1
             end
+          end
+
+          background = feature.instance_variable_get('@background')
+          if background.instance_of?(Cucumber::Ast::Background)
+            background_size = background.raw_steps.size
+            count += scenarios_number * background_size
           end
         end
 
