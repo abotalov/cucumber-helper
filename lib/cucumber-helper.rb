@@ -15,7 +15,7 @@ module Cucumber
       attr_accessor :error_message
 
       def configure
-	yield self
+        yield self
       end
     
     end
