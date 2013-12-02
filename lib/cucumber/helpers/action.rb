@@ -28,15 +28,15 @@ module Action
     if Capybara.current_url.start_with? 'https'
       incorrect_urls = []
       [
-        ['img', 'src']
-        ['script', 'src']
+        ['img', 'src'],
+        ['script', 'src'],
         ['link', 'href'],
         ['form', 'action'],
         ['video', 'data-stream'],
         ['source', 'src'],
         ['audio', 'src'],
         ['iframe', 'src'],
-        ['object', 'src'],
+        ['object', 'src']
       ].each do |tag_attr|
         Capybara.all(tag_attr[0], visible: false).each do |tag|
           attribute = tag[tag_attr[1]]
