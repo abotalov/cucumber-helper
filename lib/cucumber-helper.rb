@@ -1,7 +1,6 @@
 require "cucumber-helper/version"
 require "cucumber"
 require 'cucumber/cli/options'
-require 'cucumber/helpers/action'
 require 'cucumber/helpers/element'
 
 Cucumber::Cli::Options::BUILTIN_FORMATS['cuckebar'] = [
